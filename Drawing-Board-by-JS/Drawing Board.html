@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drawing Board</title>
+	<style type="text/css">
+		body {
+			margin: 10px;
+			background-color: lightblue;
+		}
+		#canDraw {
+			border:3px green solid;
+			background-color: #fff;
+		}
+		#btnErase {
+			height: 30px;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Drawing Board:</h1>
+	<canvas id="canDraw" width="500" height="200">
+	</canvas>
+	<div>
+		<button id="btnErase" onclick="eraseBoard()">Erase</button>
+	</div>
+	<script type="text/javascript">
+		
+//construcytor function
+function Point(x,y){
+	this.x=x;
+	this.y=y;
+} 
+var drawFlag=false;
+var pt1=new Point(1,1);
+var pt2=new Point(1,1);
+
+var canvas = document.getElementById("canDraw");
+var ctx = canvas.getContext("2d");
+
+canvas.addEventListener("mousedown", function(e) {handleMDown(e)});
+canvas.addEventListener("mousemove", function(e) {handleMMove(e)});
+canvas.addEventListener("mouseup", function(e) {handleMUp(e)});
+
+
+function handleMDown(e){
+    pt1 = new Point(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    drawFlag=true;
+}
+
+function handleMMove(e){
+    if(drawFlag==false) return;	
+    pt2=new Point(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+ 
+    ctx.beginPath();
+    ctx.moveTo(pt1.x, pt1.y);
+    ctx.lineTo(pt2.x, pt2.y);
+    ctx.stroke();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle='red';
+    ctx.closePath();
+    pt1.x = pt2.x;
+	pt1.y = pt2.y;  
+
+}
+
+function handleMUp(e){
+    drawFlag=false;
+	pt2=new Point(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+
+}
+
+function eraseBoard()
+{
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+}
+	</script>
+</body>
+</html>

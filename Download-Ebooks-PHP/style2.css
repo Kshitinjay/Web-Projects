@@ -1,0 +1,39 @@
+body {
+      background-image: url(web-development-wallpaper.jpg);
+      background-size: cover;
+      margin: fit-;
+      padding: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+.row {
+	padding: 0px 20px 20px 20px;
+}
+.column {
+  float: left;
+  width: 25%;
+  margin-top: 2%;
+}
+.btn {
+  
+}
+#im {
+	height: 420px;
+	width: 300px;
+}
+#down {
+	margin-top: -1%;
+  color: white;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}

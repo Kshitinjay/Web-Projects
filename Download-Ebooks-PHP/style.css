@@ -1,0 +1,20 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.center-div {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.heading {
+	width: 100%;
+	line-height: 80px;
+	font-size: 1.4rem;
+	font-weight: bold;
+	background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1));
+}
+form {
+	width: 400px;
+}
